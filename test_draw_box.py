@@ -8,6 +8,18 @@ from box_constants import *
 
 class TestBoxDraw(unittest.TestCase):
 
+    @patch('sys.stdout', new_callable=StringIO)
+    def test_box_correct(self, mock_out):
+        expected_out = (
+            "┌-┐\n"
+            "| |\n"
+            "| |\n"
+            "| |\n"
+            "└-┘\n"
+        )
+        draw_box(3, 5)
+        self.assertEqual(mock_out.getvalue(), expected_out)
+
     def test_rejects_nonints(self):
         self.assertRaises(TypeError, draw_box, w="non-int", h="non-int")
         self.assertRaises(TypeError, draw_box, w=2, h="non-int")
@@ -46,21 +58,6 @@ class TestBoxDraw(unittest.TestCase):
         height = 5
         
         self.assertEqual(SPACE, get_code(3, 3, height, width))
-
-    @patch('sys.stdout', new_callable=StringIO)
-    def test_box_correct(self, mock_out):
-        expected_out = (
-            "┌-┐\n"
-            "| |\n"
-            "| |\n"
-            "| |\n"
-            "└-┘\n"
-        )
-        draw_box(3, 5)
-        self.assertEqual(mock_out.getvalue(), expected_out)
-
-
-    
 
     
 if __name__ == "__main__":
