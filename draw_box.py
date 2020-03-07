@@ -1,7 +1,19 @@
 from box_constants import *
 
 def draw_box(w, h):
-    """ Draws a box of size (w, h) """
+    """ 
+    Draws a box of size (w, h) 
+    
+    For a given width and height, this function validates input (width and height must be 
+    ints no less than 2). 
+
+    Parameters: 
+    w (int): Width of box to be drawn
+    h (int): Height of box to be drawn
+
+    Returns: 
+    None: draws box directly to stdout
+    """
 
     if not isinstance(w, int) or not isinstance(h, int):
         raise TypeError("Width and height must be integers")
@@ -20,7 +32,23 @@ def draw_box(w, h):
                 print("\n", end="")
 
 def get_code(h_coord, w_coord, h, w): 
-    """ Return unicode constant for a given (h,w) coordinate """
+    """ 
+    Return unicode constant for a given (h,w) coordinate 
+
+    For a given height and width coordinate (we construct the box row by row so height and
+    width are reversed for simplicity), return the unicode constant for the box component 
+    that belongs at that coordinate. Assumed to be called post input validation so makes no 
+    additional checks. 
+
+    Parameters: 
+    h_coord (int): current height coordinate 
+    w_coord (int): current width coordinate 
+    h: height of box to be drawn
+    w: width of box to be drawn 
+
+    Returns: 
+    int: Unicode value from box_constants.py 
+    """
 
     if (h_coord, w_coord) == (0, 0):
         return TOP_LEFT

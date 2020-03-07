@@ -7,7 +7,8 @@ from draw_box import draw_box, get_code
 from box_constants import *
 
 class TestBoxDraw(unittest.TestCase):
-
+    
+    #Overall box draw test
     @patch('sys.stdout', new_callable=StringIO)
     def test_box_correct(self, mock_out):
         expected_out = (
@@ -20,7 +21,8 @@ class TestBoxDraw(unittest.TestCase):
         draw_box(3, 5)
         self.assertEqual(mock_out.getvalue(), expected_out)
 
-    def test_rejects_nonints(self):
+    #Input validation tests
+    def test_rejects_non_ints(self):
         self.assertRaises(TypeError, draw_box, w="non-int", h="non-int")
         self.assertRaises(TypeError, draw_box, w=2, h="non-int")
         self.assertRaises(TypeError, draw_box, w="non-int", h=2)
@@ -30,6 +32,7 @@ class TestBoxDraw(unittest.TestCase):
         self.assertRaises(ValueError, draw_box, w=1, h=2)
         self.assertRaises(ValueError, draw_box, w=2, h=1)
     
+    #get_code tests
     def test_corner_codes(self):
         width = 5
         height = 5
