@@ -5,7 +5,7 @@ def draw_box(w, h):
     Draws a box of size (w, h) 
     
     For a given width and height, this function validates input (width and height must be 
-    ints no less than 2). 
+    ints no less than 2) and then draws the box on screen.
 
     Parameters: 
     w (int): Width of box to be drawn
